@@ -29,13 +29,13 @@ const helloWorld =(
     
     class FormatFirstName extends React.Component {
         render() {
-            return <span>{this.props.value[0].toUpperCase() + this.props.value.slice(1)}</span>;
+            return <span className="firstName">{this.props.value}</span>;
         }
     }
     
     class FormatLastName extends React.Component {
         render() {
-            return <span className="red-text">{this.props.value.toUpperCase()}</span>;
+            return <span className="red-text lastName">{this.props.value}</span>;
         }
     }
     
