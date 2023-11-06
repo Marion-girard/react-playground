@@ -1,6 +1,25 @@
-const firstName = 'r0ulito';
-const lastName = 'formateur';
 
+
+class FormatFirstName extends React.Component {
+    render() {
+        return <span className="firstName">{this.props.value}</span>;
+    }
+}
+
+class FormatLastName extends React.Component {
+    render() {
+        return <span className="red-text lastName">{this.props.value}</span>;
+    }
+}
+
+const firstName = 'marion';
+const lastName = 'girard';
+
+const HelloWorld = (
+    <h1>
+        Hello <FormatFirstName value={firstName} /> <FormatLastName value={lastName} />
+    </h1>
+);
 
 
 
