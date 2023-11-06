@@ -1,7 +1,19 @@
 const firstName = 'r0ulito';
 const lastName = 'formateur';
 
-function FirstName(props) {
+
+
+
+
+
+ReactDOM.render(helloWorld, document.querySelector('#app'));
+
+
+
+
+
+
+//function FirstName(props) {
 
     /*
     // Solution avec bonus
@@ -13,10 +25,10 @@ function FirstName(props) {
     */
 
     // Solution sans bonus
-    return <span>{props.text[0].toUpperCase() + props.text.substr(1)}</span>
-}
+    //return <span>{props.text[0].toUpperCase() + props.text.substr(1)}</span>
+//}
 
-function LastName(props) {
+//function LastName(props) {
 
     /*
     // Solution avec bonus
@@ -28,10 +40,8 @@ function LastName(props) {
     */
 
     // Solution sans bonus
-    return <span className="red-text">{props.text.toUpperCase()}</span>
+    //return <span className="red-text">{props.text.toUpperCase()}</span>
 
-}
+//}
 
-const helloWorld = <h1>Hello <FirstName text={firstName}/> <LastName text={lastName}/></h1>;
-
-ReactDOM.render(helloWorld, document.querySelector('#app'));
+//const helloWorld = <h1>Hello <FirstName text={firstName}/> <LastName text={lastName}/></h1>;
