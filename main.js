@@ -82,9 +82,12 @@ function Clock(props) {
     }, []);
     
     const [date, setDate] = React.useState(new Date());
-    const [textColor, setTextColor] = React.useState("#000000")
+    const [textColor, setTextColor] = React.useState("#000000");
+    const intervalRef = React.useRef(0)
+    
     const tick = () => {
-        setInterval(() => {
+
+        intervalRef.current = setInterval(() => {
             setDate(new Date())
         }, 1000)
     }
@@ -97,7 +100,13 @@ function Clock(props) {
       setTextColor(randomColor)
     }
 
-    
+    const stopClock = () => {
+clearInterval (intervalRef.current)
+    }
+
+    const restartClock = () => {
+      tick()
+    }
     return (
         <div>
             <h1>Hello world</h1>
@@ -105,6 +114,8 @@ function Clock(props) {
 
             <button onClick={colorAlea}> Aléatoire</button>
             <button onClick={null}> Black</button>
+            <button onClick={stopClock}>stop</button>
+            <button onClick={restartClock}>Restart</button>
             
         </div>
         );
