@@ -89,11 +89,19 @@ function Clock(props) {
         }, 1000)
     }
     
+    const colorAléa = () => {
 
+    }
+
+    const black = () => {
+      
+    }
     return (
         <div>
             <h1>Hello world</h1>
             <h2>Il est {date.toLocaleTimeString()}.</h2>
+            <button onClick={this.colorAléa}> Aléatoire</button>
+            <button onClick={this.black}> Black</button>
         </div>
         );
 }
