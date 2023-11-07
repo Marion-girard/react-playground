@@ -90,7 +90,7 @@ function Clock(props) {
     }
     
     const colorAléa = () => {
-
+        return console.log("Aléa")
     }
 
     const black = () => {
