@@ -46,7 +46,7 @@ function UserGreeting(props) {
     // Remarque : le tableau vide de dépendances [] indique
     // que useEffect ne s’exécutera qu’une fois, un peu comme
     // componentDidMount()
-    useEffect(() => {
+    React.useEffect(() => {
       fetch("https://jsonplaceholder.typicode.com/users")
         .then(res => res.json())
         .then(
@@ -73,7 +73,15 @@ function UserGreeting(props) {
         <ul>
           {items.map(item => (
             <li key={item.id}>
-              {item.name} {item.price}
+              <ul>
+             <li> {item.name} </li>
+             <li> {item.email} </li>
+              
+             <li> {item.company.name}</li>
+             <li> {item.phone}</li>
+             <li> {item.website}</li>
+            </ul>
+            
             </li>
           ))}
         </ul>
