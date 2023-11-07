@@ -82,26 +82,30 @@ function Clock(props) {
     }, []);
     
     const [date, setDate] = React.useState(new Date());
-
+    const [textColor, setTextColor] = React.useState("#000000")
     const tick = () => {
         setInterval(() => {
             setDate(new Date())
         }, 1000)
     }
     
-    const colorAléa = () => {
-        return console.log("Aléa")
+    
+
+    const colorAlea = () => {
+      const randomColor =`#${Math.floor(Math.random() * 16777215).toString(16)}`
+      console.log(randomColor)
+      setTextColor(randomColor)
     }
 
-    const black = () => {
-      
-    }
+    
     return (
         <div>
             <h1>Hello world</h1>
-            <h2>Il est {date.toLocaleTimeString()}.</h2>
-            <button onClick={this.colorAléa}> Aléatoire</button>
-            <button onClick={this.black}> Black</button>
+            <h2 style={{color: textColor}}>Il est {date.toLocaleTimeString()}.</h2>
+
+            <button onClick={colorAlea}> Aléatoire</button>
+            <button onClick={null}> Black</button>
+            
         </div>
         );
 }
