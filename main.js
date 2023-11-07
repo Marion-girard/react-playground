@@ -35,3 +35,7 @@ function UserCard({user}) {
 }
 
 ReactDOM.render(<App/>, document.querySelector('#app'))
+
+function NameForm{
+  
+}
