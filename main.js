@@ -1,33 +1,40 @@
 
 
-class FormatFirstName extends React.Component {
-    render() {
-        return <span className="firstName">{this.props.value}</span>;
+class Clock extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {date: new Date()};
     }
-}
-
-class FormatLastName extends React.Component {
-    render() {
-        return <span className="red-text lastName">{this.props.value}</span>;
+  
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+        );
     }
-}
+  
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
 
-const firstName = 'marion';
-const lastName = 'girard';
-
-const HelloWorld = (
-    <h1>
-        Hello <FormatFirstName value={firstName} /> <FormatLastName value={lastName} />
-    </h1>
-);
-
-
-
-
-
-ReactDOM.render(helloWorld, document.querySelector('#app'));
-
-
+    tick() {
+        this.setState({
+          date: new Date()
+        });
+      }
+    render() {
+      return (
+        <div>
+          <h1>Bonjour, monde !</h1>
+          <h2>Il est {this.state.date.toLocaleTimeString()}.</h2>
+        </div>
+      );
+    }
+  }
+  
+  ReactDOM.render(<Clock/>,document.getElementById('root'));
+  
+  
 
 
 
