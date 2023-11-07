@@ -1,6 +1,6 @@
 
 
-class Clock extends React.Component {
+/*class Clock2 extends React.Component {
     constructor(props) {
       super(props);
       this.state = {date: new Date()};
@@ -30,8 +30,52 @@ class Clock extends React.Component {
         </div>
       );
     }
-  }
+  }*/
   
+
+  /*function Clock(props){
+    const  [date, setDate]= React.useState(new Date());
+    const [bool, setBool] = React.useState(false);
+    const time = bool + " " +date;
+    React.useEffect(()=> {
+      
+      setDate(new Date());
+    }, [bool]);
+    
+    return (
+      <div>
+        <h1>Bonjour, monde !</h1>
+        <h2>Il est {time}.</h2>
+        <button onClick={()=> setBool(!bool)}></button>
+      </div>
+    );
+  }*/
+
+  function Clock(props){
+    const  [date, setDate]= React.useState(new Date());
+    
+    React.useEffect(()=> {
+      
+      tick()
+      return () => {
+        
+      }
+    }, []);
+    const tick = () =>{
+      console.log("tick")
+      setInterval(function(){
+        console.log("interval")
+        setDate(new Date());
+      },1000)
+    }
+    return (
+      <div>
+        <h1>Bonjour, monde !</h1>
+        <h2>Il est {date.toLocaleTimeString()}.</h2>
+        
+      </div>
+    );
+  }
   ReactDOM.render(<Clock/>,document.getElementById('root'));
   
   
