@@ -73,16 +73,22 @@ function Greeting(props) {
   const [isLoggedIn, setIsLoggedIn] = React.useState(props.isLoggedIn);
 
   const handleClick = () => {
-    setIsLoggedIn(true);
+   return setIsLoggedIn(true);
+    
+  };
+
+  const handleLogoutClick = () => {
+    return setIsLoggedIn(false);
   };
   
- return(
+  return(
     <div>
-      {isLoggedIn ? < UserGreeting/> : <GuestGreeting />} 
-    
-      <button onClick={handleClick}>Connection</button>
-    </div>
-)
+    {isLoggedIn ? <UserGreeting /> : <GuestGreeting />}
+    <button onClick={isLoggedIn ? handleLogoutClick : handleClick }>
+      {isLoggedIn ? 'Déconnexion' : 'Connexion'}
+    </button>
+  </div>
+  )
 }
 
 
