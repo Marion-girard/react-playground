@@ -77,7 +77,9 @@ function Greeting(props) {
   };
   
  return(
-    <div>{isLoggedIn ? < UserGreeting/> : <GuestGreeting />} 
+    <div>
+      {isLoggedIn ? < UserGreeting/> : <GuestGreeting />} 
+    
       <button onClick={handleClick}>Connection</button>
     </div>
 )
