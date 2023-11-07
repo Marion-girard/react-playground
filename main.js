@@ -49,6 +49,8 @@ function Clock(props) {
             <div>
                 <h1>Hello world</h1>
                 <h2 style={{color: textColor}}>Il est {date.toLocaleTimeString()}.</h2>
+                <button onClick={changeColor}>Changer couleur</button>
+                <button onClick={resetColor}>Réinitialiser couleur</button>
                 <button onClick={stopClock}>Stop</button>
                 <button onClick={restartClock}>Reprendre</button>
             </div>
@@ -57,6 +59,36 @@ function Clock(props) {
 
 ReactDOM.render(<Clock />, document.querySelector('#app'));
 
+function UserGreeting(props) {
+  return <h1>Bienvenue !</h1>;
+}
+
+function GuestGreeting(props) {
+  return <h1>Veuillez vous inscrire.</h1> ;
+}
+
+
+function Greeting(props) {
+  
+  const [isLoggedIn, setIsLoggedIn] = React.useState(props.isLoggedIn);
+
+  const handleClick = () => {
+    setIsLoggedIn(true);
+  };
+  
+ return(
+    <div>{isLoggedIn ? < UserGreeting/> : <GuestGreeting />} 
+      <button onClick={handleClick}>Connection</button>
+    </div>
+)
+}
+
+
+
+ReactDOM.render(
+  <Greeting isLoggedIn={false} />,
+  document.getElementById('root')
+);
 
 
 
