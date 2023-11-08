@@ -69,5 +69,19 @@ class NameForm extends React.Component {
 
 
 function NameForm(){
-  
+  const handleChange = (event) => {
+
+  }
+
+  const handleSubmit = (event) => {
+
+  }
+
+  return(<form onSubmit={handleSubmit}>
+    <label>
+      Nom :
+      <input type="text" value={this.state.value} onChange={handleChange} />
+    </label>
+    <input type="submit" value="Envoyer" />
+  </form>)
 }
