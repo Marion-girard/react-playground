@@ -69,12 +69,14 @@ class NameForm extends React.Component {
 
 
 function NameForm(){
+  const value = 
   const handleChange = (event) => {
 
   }
 
   const handleSubmit = (event) => {
-
+    alert('Le nom a été soumis : ' + value);
+    event.preventDefault();
   }
 
   return(<form onSubmit={handleSubmit}>
