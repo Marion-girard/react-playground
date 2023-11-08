@@ -88,3 +88,30 @@ function NameForm(props){
     </form>
   );
 }
+
+function Clock(props){
+  const  [date, setDate]= React.useState(new Date());
+  
+  React.useEffect(()=> {
+    
+    tick()
+    return () => {
+      
+    }
+  }, []);
+  const tick = () =>{
+    console.log("tick")
+    setInterval(function(){
+      console.log("interval")
+      setDate(new Date());
+    },1000)
+  }
+  return (
+    <div>
+      <h1>Bonjour, monde !</h1>
+      <h2>Il est {date.toLocaleTimeString()}.</h2>
+      
+    </div>
+  );
+}
+ReactDOM.render(<Clock/>,document.getElementById('root'));
