@@ -36,7 +36,7 @@ function UserCard({user}) {
 
 ReactDOM.render(<App/>, document.querySelector('#app'))
 
-class NameForm extends React.Component {
+{
   constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -59,7 +59,7 @@ class NameForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Nom :
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="text" value={props.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Envoyer" />
       </form>
@@ -68,22 +68,16 @@ class NameForm extends React.Component {
 }
 
 
-function NameForm(){
-  const value = 
-  const handleChange = (event) => {
+function NameForm(props){
+const handleSubmit = 
 
-  }
-
-  const handleSubmit = (event) => {
-    alert('Le nom a été soumis : ' + value);
-    event.preventDefault();
-  }
-
-  return(<form onSubmit={handleSubmit}>
-    <label>
-      Nom :
-      <input type="text" value={this.state.value} onChange={handleChange} />
-    </label>
-    <input type="submit" value="Envoyer" />
-  </form>)
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Nom :
+        <input type="text" value={props.value} onChange={handleChange} />
+      </label>
+      <input type="submit" value="Envoyer" />
+    </form>
+  );
 }
