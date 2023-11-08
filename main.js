@@ -34,15 +34,16 @@ function UserCard({user}) {
     )
 }
 
-ReactDOM.render(<App/>, document.querySelector('#app'))
+//ReactDOM.render(<App/>, document.querySelector('#app'))
 
-{
+/*{
   constructor(props) {
     super(props);
     this.state = {value: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    
   }
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -64,13 +65,15 @@ ReactDOM.render(<App/>, document.querySelector('#app'))
       </form>
     );
   }
-}
+}*/
 
 
 function NameForm(props){
-  const [value, ''] = 
-  const  handleChange = (e) =>{
-    setState({value: e.target.value});
+
+
+  const [value, setState] = React.useState('');
+  const  handleChange = (e) => {
+    setState(e.target.value);
   }
 
   const handleSubmit = (e) =>{
@@ -82,16 +85,16 @@ function NameForm(props){
     <form onSubmit={handleSubmit}>
       <label>
         Nom :
-        <input type="text" value={props.value} onChange={handleChange} />
+        <input type="text" value={value} onChange={handleChange} />
       </label>
       <input type="submit" value="Envoyer" />
     </form>
   );
 }
-
-function Clock(props){
+ReactDOM.render(<NameForm/>, document.querySelector('#app'))
+/*function Clock(props){
   const  [date, setDate]= React.useState(new Date());
-  
+  this.state = {date: new Date()};
   React.useEffect(()=> {
     
     tick()
@@ -114,4 +117,4 @@ function Clock(props){
     </div>
   );
 }
-ReactDOM.render(<Clock/>,document.getElementById('root'));
+ReactDOM.render(<Clock/>,document.getElementById('root'));*/
