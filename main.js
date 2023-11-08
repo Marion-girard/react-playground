@@ -43,18 +43,14 @@ function NameForm(props){
 
   const [value, setState] = React.useState('');
   const  handleChange = (e) => {
-    const target = e.target;
-    const value = target.type === 'text' ? target.checked : target.value;
-    const name = target.name;
+    
     setState(e.target.value);
   }
 
   const handleSubmit = (e) =>{
     alert('Le nom a été soumis : ' + value);
     e.preventDefault();
-    alert('Un essai a été envoyé : ' + value);
-    e.preventDefault();
-
+   
 
 
   }
