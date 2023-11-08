@@ -102,50 +102,56 @@ function EssayForm(props){
 
 const MultiForm = () => {
   const [inputs, setInputs] = React.useState({
-    name: '',
-    text: 'text from essay',
-    flavor: 'coconut',
+    name: "totoro",
+    text: "text from essay",
+    flavor: "coconut",
   });
 
-  const handleNameChange = (e) => {
-    setInputs({ ...inputs, name: e.target.value });
+  React.useEffect(() => {
+    console.log(inputs);
+  }, [inputs]);
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    console.log(name, value);
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
   };
 
-  const handleTextChange = (e) => {
-    setInputs({ ...inputs, text: e.target.value });
-  };
-
-  const handleFlavorChange = (e) => {
-    setInputs({ ...inputs, flavor: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    alert('Le formulaire a été soumis');
-    e.preventDefault();
-  };
-
+  const handleSubmit = () => {};
   return (
     <form onSubmit={handleSubmit}>
       <label>
         Nom :
-        <input type="text" value={inputs.name} onChange={handleNameChange} />
+        <input
+          name="name"
+          type="text"
+          value={inputs.name}
+          onChange={handleChange}
+        />
       </label>
       <label>
-        Texte :
-        <textarea value={inputs.text} onChange={handleTextChange} />
+        Essay:
+        <textarea
+          name="text"
+          rows={5}
+          cols={35}
+          value={inputs.text}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Choisissez votre parfum favori :
-        <select value={inputs.flavor} onChange={handleFlavorChange}>
+        <select name="flavor" value={inputs.flavor} onChange={handleChange}>
           <option value="grapefruit">Pamplemousse</option>
           <option value="lime">Citron vert</option>
           <option value="coconut">Noix de coco</option>
           <option value="mango">Mangue</option>
         </select>
       </label>
-      <input type="submit" value="Envoyer" />
     </form>
   );
 };
 
-ReactDOM.render(<MultiForm />, document.querySelector('#app'));
+ReactDOM.render(<MultiForm />, document.querySelector("#app"));
