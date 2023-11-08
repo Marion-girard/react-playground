@@ -39,10 +39,10 @@ function UserGreeting(props) {
   );
 
   function MyComponent() {
-    const [error, setError] = React.useState(null);
-    const [isLoaded, setIsLoaded] = React.useState(false);
-    const [items, setItems] = React.useState([]);
+    
+    const [users, setUsers] = React.useState([]);
   
+
     // Remarque : le tableau vide de dépendances [] indique
     // que useEffect ne s’exécutera qu’une fois, un peu comme
     // componentDidMount()
@@ -51,26 +51,24 @@ function UserGreeting(props) {
         .then(res => res.json())
         .then(
           (result) => {
-            setIsLoaded(true);
-            setItems(result);
+            
+            setUsers(result);
           },
           // Remarque : il faut gérer les erreurs ici plutôt que dans
           // un bloc catch() afin que nous n’avalions pas les exceptions
           // dues à de véritables bugs dans les composants.
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
+       
         )
     }, [])
   
-    if (error) {
-      return <div>Erreur : {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Chargement...</div>;
-    } else {
+   
       return (
-        <ul>
+        <React.Fragment>
+          {users.map((user) =>(
+            <UserCard key={user.id} user={user} t />
+          ))}
+        </React.Fragment>
+       /* <ul>
           {items.map(item => (
             <li key={item.id}>
               <ul>
@@ -84,10 +82,24 @@ function UserGreeting(props) {
             
             </li>
           ))}
-        </ul>
+        </ul>*/
       );
     }
-  }
+    
+          const UserCard = (props) =>{
+            const {user} =props 
+            return(
+              <ul>
+              <li> {user.name} </li>
+              <li> {user.email} </li>
+               
+              <li> {user.company.name}</li>
+              <li> {user.phone}</li>
+              <li> {user.website}</li>
+             </ul>
+            )
+          }
+  
   ReactDOM.render(
     <MyComponent />,
     document.querySelector('#root')
