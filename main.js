@@ -44,7 +44,6 @@ ReactDOM.render(<App/>, document.querySelector('#app'))
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
   handleChange(event) {
     this.setState({value: event.target.value});
   }
@@ -53,7 +52,7 @@ ReactDOM.render(<App/>, document.querySelector('#app'))
     alert('Le nom a été soumis : ' + this.state.value);
     event.preventDefault();
   }
-
+  
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -69,7 +68,15 @@ ReactDOM.render(<App/>, document.querySelector('#app'))
 
 
 function NameForm(props){
-const handleSubmit = 
+  const [value, ''] = 
+  const  handleChange = (e) =>{
+    setState({value: e.target.value});
+  }
+
+  const handleSubmit = (e) =>{
+    alert('Le nom a été soumis : ' + value);
+    e.preventDefault();
+  }
 
   return (
     <form onSubmit={handleSubmit}>
