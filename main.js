@@ -36,36 +36,6 @@ function UserCard({user}) {
 
 //ReactDOM.render(<App/>, document.querySelector('#app'))
 
-/*{
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    
-  }
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('Le nom a été soumis : ' + this.state.value);
-    event.preventDefault();
-  }
-  
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Nom :
-          <input type="text" value={props.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Envoyer" />
-      </form>
-    );
-  }
-}*/
 
 
 function NameForm(props){
@@ -73,14 +43,52 @@ function NameForm(props){
 
   const [value, setState] = React.useState('');
   const  handleChange = (e) => {
+    const target = e.target;
+    const value = target.type === 'text' ? target.checked : target.value;
+    const name = target.name;
     setState(e.target.value);
   }
 
   const handleSubmit = (e) =>{
     alert('Le nom a été soumis : ' + value);
     e.preventDefault();
+    alert('Un essai a été envoyé : ' + value);
+    e.preventDefault();
+
+
+
   }
 
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Nom :
+        <input type="text" value={value} onChange={handleChange} />
+      </label>
+      <input type="submit" value="Envoyer" />
+
+      <label>
+        Nom :
+        <textarea type="text" value={value} onChange={handleChange} />
+      </label>
+      <input type="submit" value="Envoyer" />
+    </form>
+  );
+}
+
+function EssayForm(props){
+
+
+  const [value, setState] = React.useState('Écrivez un essai à propos de votre élément du DOM préféré');
+  const  handleChange = (e) => {
+    setState(e.target.value);
+  }
+
+  const handleSubmit = (e) =>{
+    alert('Un essai a été envoyé : ' + value);
+    e.preventDefault();
+  }
+  
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -91,30 +99,53 @@ function NameForm(props){
     </form>
   );
 }
-ReactDOM.render(<NameForm/>, document.querySelector('#app'))
-/*function Clock(props){
-  const  [date, setDate]= React.useState(new Date());
-  this.state = {date: new Date()};
-  React.useEffect(()=> {
-    
-    tick()
-    return () => {
-      
-    }
-  }, []);
-  const tick = () =>{
-    console.log("tick")
-    setInterval(function(){
-      console.log("interval")
-      setDate(new Date());
-    },1000)
-  }
+
+const MultiForm = () => {
+  const [inputs, setInputs] = React.useState({
+    name: '',
+    text: 'text from essay',
+    flavor: 'coconut',
+  });
+
+  const handleNameChange = (e) => {
+    setInputs({ ...inputs, name: e.target.value });
+  };
+
+  const handleTextChange = (e) => {
+    setInputs({ ...inputs, text: e.target.value });
+  };
+
+  const handleFlavorChange = (e) => {
+    setInputs({ ...inputs, flavor: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    alert('Le formulaire a été soumis');
+    e.preventDefault();
+  };
+
   return (
-    <div>
-      <h1>Bonjour, monde !</h1>
-      <h2>Il est {date.toLocaleTimeString()}.</h2>
-      
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Nom :
+        <input type="text" value={inputs.name} onChange={handleNameChange} />
+      </label>
+      <label>
+        Texte :
+        <textarea value={inputs.text} onChange={handleTextChange} />
+      </label>
+      <label>
+        Choisissez votre parfum favori :
+        <select value={inputs.flavor} onChange={handleFlavorChange}>
+          <option value="grapefruit">Pamplemousse</option>
+          <option value="lime">Citron vert</option>
+          <option value="coconut">Noix de coco</option>
+          <option value="mango">Mangue</option>
+        </select>
+      </label>
+      <input type="submit" value="Envoyer" />
+    </form>
   );
-}
-ReactDOM.render(<Clock/>,document.getElementById('root'));*/
+};
+
+ReactDOM.render(<MultiForm />, document.querySelector('#app'));
